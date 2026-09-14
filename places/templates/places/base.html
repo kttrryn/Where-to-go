@@ -3,27 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Куди піти?</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'places/style.css' %}">
 </head>
 <body>
-    <!-- header -->
-    <header>
-        <a href="{% url 'places:main' %}">Головна</a> |
-        <a href="{% url 'places:places_list' %}">Список місць</a> |
-        <a href="{% url 'places:add_place' %}">Додати місце</a>
-    </header>
+    <!-- Ліва реклама -->
+    <aside class="ad-banner left-ad">
+        <img src="{% static 'places/ad_left.png' %}" alt="Ліва реклама">
+    </aside>
 
-    <hr>
+    <div class="container">
+        <header>
+            <a href="{% url 'places:main' %}">Головна</a> |
+            <a href="{% url 'places:places_list' %}">Список місць</a> |
+            <a href="{% url 'places:add_place' %}">Додати місце</a>
+        </header>
 
-    <!-- сюди попадає контент сторінок -->
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+        <hr>
 
-    <hr>
+        <!-- сюди попадає контент сторінок -->
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
 
-    <footer>
-        <p>Нижній текст.</p>
-    </footer>
+        <hr>
+
+        <footer>
+            <p>Нижній текст.</p>
+        </footer>
+
+    </div>
+
+    <!-- Права реклама -->
+    <aside class="ad-banner right-ad">
+        <img src="{% static 'places/ad_right.png' %}" alt="Права реклама">
+    </aside>
 </body>
 </html>

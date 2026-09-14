@@ -1,12 +1,14 @@
 {% load static %}
 
-<div class="place-card" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px;">
-    <img src="{% static 'places/img.jpg' %}" alt="Фото місця" style="width: 150px; float: left; margin-right: 15px;">
+<div class="place-card" >
+    <img src="{% static 'places/img.png' %}" alt="Фото місця" style="width: 150px; float: left; margin-right: 15px;">
 
     <div>
         <h3><a href="{% url 'places:place_detail' place_id %}">{{ place.name }}</a></h3>
 
-        <p><strong>Опис:</strong> {{ place.description|truncatewords:5 }}</p>
+       <p class="description-text">
+    <strong>Опис:</strong> {{ place.description|truncatewords:5|truncatechars:40 }}
+</p>
         <p><strong>Тип:</strong> {{ place.place_type }}</p>
 
         <p><strong>Локація:</strong>

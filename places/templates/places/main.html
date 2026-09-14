@@ -1,0 +1,13 @@
+{% extends 'places/base.html' %}
+
+{% block content %}
+    <h1>Куди піти сьогодні?</h1>
+
+    {% if random_place %}
+        <h2>Система пропонує:</h2>
+        <!-- Вставляємо те саме прев'ю, але тепер передаємо у нього випадкове місце -->
+        {% include 'places/_place_preview.html' with place=random_place place_id=place_id %}
+    {% else %}
+        <p>Додай хоча б одне місце, щоб система могла щось порадити!</p>
+    {% endif %}
+{% endblock %}

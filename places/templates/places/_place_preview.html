@@ -1,0 +1,32 @@
+{% load static %}
+
+<div class="place-card" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px;">
+    <img src="{% static 'places/img.jpg' %}" alt="Фото місця" style="width: 150px; float: left; margin-right: 15px;">
+
+    <div>
+        <h3><a href="{% url 'places:place_detail' place_id %}">{{ place.name }}</a></h3>
+
+        <p><strong>Опис:</strong> {{ place.description|truncatewords:5 }}</p>
+        <p><strong>Тип:</strong> {{ place.place_type }}</p>
+
+        <p><strong>Локація:</strong>
+            {% if place.location %}
+                {{ place.location }}
+            {% else %}
+                Secret place👀
+            {% endif %}
+        </p>
+
+        <p><strong>Рейтинг:</strong>
+            {% if place.rating == 1 %}★☆☆☆☆
+            {% elif place.rating == 2 %}★★☆☆☆
+            {% elif place.rating == 3 %}★★★☆☆
+            {% elif place.rating == 4 %}★★★★☆
+            {% elif place.rating == 5 %}★★★★★
+            {% endif %}
+        </p>
+
+        <p><small>Дату створення вкрали коти</small></p>
+    </div>
+    <div style="clear: both;"></div>
+</div>

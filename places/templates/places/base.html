@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Куди піти?</title>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <a href="{% url 'places:main' %}">Головна</a> |
+        <a href="{% url 'places:places_list' %}">Список місць</a> |
+        <a href="{% url 'places:add_place' %}">Додати місце</a>
+    </header>
+
+    <hr>
+
+    <!-- сюди попадає контент сторінок -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>Нижній текст.</p>
+    </footer>
+</body>
+</html>

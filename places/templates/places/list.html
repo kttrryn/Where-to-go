@@ -1,0 +1,14 @@
+{% extends 'places/base.html' %}
+
+{% block content %}
+    <h1>Мої збережені місця</h1>
+
+    {% if places %}
+        {% for place in places %}
+            <!-- forloop.counter0 показує індекс поточного елемента в циклі -->
+            {% include 'places/_place_preview.html' with place=place place_id=forloop.counter0 %}
+        {% endfor %}
+    {% else %}
+        <p>Твій список поки що порожній. Час додати нові місця!</p>
+    {% endif %}
+{% endblock %}

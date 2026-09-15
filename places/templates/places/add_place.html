@@ -1,0 +1,12 @@
+{% extends 'places/base.html' %}
+
+{% block content %}
+    <h1>Додати нове місце</h1>
+    <form action="{% url 'places:add_place' %}" method="post">
+        {% csrf_token %} 
+        
+        {{ form.as_p }} <!-- Виводить форму абзацами -->
+        
+        <button type="submit">Зберегти місце</button>
+    </form>
+{% endblock %}

@@ -3,10 +3,22 @@
 {% block content %}
     <h1>Куди піти сьогодні?</h1>
     <p>Не знаєш, куди сьогодні сходити? Ми зробимо цей вибір за тебе!</p>
-    {% if random_place %}
-        <h2>Система пропонує:</h2>
-        {% include 'places/_place_preview.html' with place=random_place place_id=place_id %}
-    {% else %}
-        <p>Додай хоча б одне місце, щоб система могла щось порадити!</p>
+
+    <!--  форма з кнопкою -->
+    <form method="GET">
+        <button type="submit" name="generate" value="true" class="button">Обрати місце</button>
+    </form>
+
+    <br><br>
+
+    <!-- Перевіряємо, чи натиснув користувач кнопку (чи є параметр generate в URL) -->
+    {% if 'generate' in request.GET %}
+
+        {% if random_place %}
+            <h2>Система пропонує:</h2>
+            {% include 'places/_place_preview.html' with place=random_place place_id=place_id %}
+        {% else %}
+            <p>Додай хоча б одне місце, щоб система могла щось порадити!</p>
+        {% endif %}
     {% endif %}
 {% endblock %}

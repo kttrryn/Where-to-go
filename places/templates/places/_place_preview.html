@@ -28,7 +28,13 @@
             {% endif %}
         </p>
 
-        <p><small>Дату створення вкрали коти</small></p>
+        <p><small>
+            {% if place.created_at %}
+                Дата створення: {{ place.created_at }}
+            {% else %}
+                Дату створення вкрала жаба 🐸
+            {% endif %}
+        </small></p>
     </div>
     <div style="clear: both;"></div>
 </div>

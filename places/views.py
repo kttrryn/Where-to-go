@@ -1,4 +1,5 @@
 import random
+from datetime import datetime
 from django.shortcuts import render, redirect
 from .forms import PlaceForm
 
@@ -14,7 +15,6 @@ def main_view(request):
         weights = [int(place.get('rating', 1)) for place in places]
 
         # random.choices обирає елемент з урахуванням ваг. k=1 означає, що нам потрібен 1 елемент.
-        # Він повертає список, тому беремо перший елемент [0]
         random_place = random.choices(places, weights=weights, k=1)[0]
 
         # Знаходимо індекс (id) вибраного місця, щоб передати його в шаблон для посилання
@@ -35,14 +35,14 @@ def add_place_view(request):
         form = PlaceForm(request.POST)
         # валідація форми
         if form.is_valid():
-            # Отримуємо очищені та валідовані дані у вигляді словника
+            # Отримуємо словник
             new_place = form.cleaned_data
+            new_place['created_at'] = datetime.now().strftime("%d.%m.%Y %H:%M")
             # Отримуємо поточний список із сесії
             places = request.session.get('places', [])
             places.append(new_place)
 
             # Зберігаємо оновлений список назад у сесію користувача
-            # Це важливо, щоб дані збереглись між окремими HTTP-запитами ?????
             # отут ми придумали назву 'places'
             request.session['places'] = places
 
@@ -64,6 +64,4 @@ def place_detail_view(request, place_id):
     # Перевіряємо, чи існує місце з таким place_id у нашому списку
     if 0 <= place_id < len(places):
         place = places[place_id]
-
-    # Передаємо конкретний запис у шаблон
     return render(request, 'places/detail.html', {'place': place})

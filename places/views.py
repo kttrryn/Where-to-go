@@ -1,7 +1,7 @@
 import random
 from datetime import datetime
 from django.shortcuts import render, redirect
-from .forms import PlaceForm
+from .forms import PlaceForm, PLACE_TYPES
 
 
 def main_view(request):
@@ -37,6 +37,8 @@ def add_place_view(request):
         if form.is_valid():
             # Отримуємо словник
             new_place = form.cleaned_data
+            types_dict = dict(PLACE_TYPES)
+            new_place['place_type'] = types_dict.get(new_place['place_type'], new_place['place_type'])
             new_place['created_at'] = datetime.now().strftime("%d.%m.%Y %H:%M")
             # Отримуємо поточний список із сесії
             places = request.session.get('places', [])

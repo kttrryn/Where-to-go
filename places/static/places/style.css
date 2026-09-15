@@ -58,15 +58,41 @@ body {
     }
 }
 
-.button {
+.main-header {
+    display: flex;
+    gap: 15px; /* Відстань між кнопками */
+    justify-content: center; /* Центруємо кнопки */
+    margin-bottom: 10px;
+}
+
+.nav-btn {
+    text-decoration: none; /* Прибираємо стандартне підкреслення посилань */
+    color: #333;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px; /* Робимо їх округлими, як пігулки */
+    background-color: #e9ecef; /* Світло-сірий фон */
+    transition: all 0.3s ease; /* Плавна анімація при наведенні */
+}
+
+.nav-btn:hover {
     background-color: #007bff;
     color: white;
-    padding: 10px 20px;
+    transform: translateY(-2px);
+}
+
+.button {
+    background-color: #6f42c1; /* Наприклад, приємний фіолетовий колір */
+    color: white;
+    font-size: 18px; /* Робимо текст більшим */
+    padding: 15px 30px; /* Збільшуємо розмір самої кнопки (верх/низ 15px, право/ліво 30px) */
     border: none;
-    border-radius: 4px;
+    border-radius: 8px; /* Трохи заокруглені кути */
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #59339d;
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Куди піти?</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'places/style.css' %}">
+    <link rel="stylesheet" href="{% static 'places/style.css' %}?v=2">
 </head>
 <body>
     <!-- Ліва реклама -->
@@ -13,10 +13,10 @@
     </aside>
 
     <div class="container">
-        <header>
-            <a href="{% url 'places:main' %}">Головна</a> |
-            <a href="{% url 'places:places_list' %}">Список місць</a> |
-            <a href="{% url 'places:add_place' %}">Додати місце</a>
+        <header class="main-header">
+            <a href="{% url 'places:main' %}" class="nav-btn">Головна</a>
+            <a href="{% url 'places:places_list' %}" class="nav-btn">Список місць</a>
+            <a href="{% url 'places:add_place' %}" class="nav-btn">Додати місце</a>
         </header>
 
         <hr>
